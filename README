@@ -415,5 +415,17 @@ Change
 =========
 add the fun , when use RAW command get sensor Temperature, return viewing value.
 
+Install
+=========
+./configure --disable-ipmishell --prefix=/home/
+make
+make install
+
+*if have error on x64 os.you can try: autoreconf -ivf
+
+Uninstall
+=========
+make clean && make uninstall
+
 for ljb90@live.cn.
     ljingb
