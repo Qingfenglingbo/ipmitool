@@ -410,3 +410,10 @@ http://www.intel.com/design/servers/ipmi/spec.htm
 OpenIPMI project: Linux IPMI kernel driver and userland library
 http://openipmi.sourceforge.net
 
+
+Change
+=========
+add the fun , when use RAW command get sensor Temperature, return viewing value.
+
+for ljb90@live.cn.
+    ljingb
