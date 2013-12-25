@@ -46,6 +46,17 @@
 
 #define IPMI_I2C_MASTER_MAX_SIZE	0x40 /* 64 bytes */
 
+/*函数名称:ipmi_sensor_value --把16进制读数转换成可读数值
+ *
+ * @intf:   ipmi interface
+ * @data:   sensor value of hex
+ * @pin:    sensor number of hex
+ *
+ * return 0 on success
+ * return -1 on error
+ *
+ * issues:目前获得指定传感器数据时,会遍历其他传感器,直到遍历到要查找的传感器
+ */
 
 static int
 ipmi_sensor_value(struct ipmi_intf *intf, uint8_t data, uint8_t pin)
