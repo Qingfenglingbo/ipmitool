@@ -46,7 +46,7 @@
 
 #define IPMI_I2C_MASTER_MAX_SIZE	0x40 /* 64 bytes */
 
-/*函数名称:ipmi_sensor_value --把16进制读数转换成可读数值
+/*函数名称:ipmi_sensor_value_format --把16进制读数转换成可读数值
  *
  * @intf:   ipmi interface
  * @data:   sensor value of hex
@@ -59,7 +59,7 @@
  */
 
 static int
-ipmi_sensor_value(struct ipmi_intf *intf, uint8_t data, uint8_t pin)
+ipmi_sensor_value_format(struct ipmi_intf *intf, uint8_t data, uint8_t pin)
 {
     struct sdr_get_rs *header;
     struct ipmi_sdr_iterator *itr;
@@ -81,7 +81,7 @@ ipmi_sensor_value(struct ipmi_intf *intf, uint8_t data, uint8_t pin)
 
         switch (header->type)
         {
-        case SDR_RECORD_TYPE_FULL_SENSOR:
+        case SDR_RECORD_TYPE_COMPACT_SENSOR:
             rec = ipmi_sdr_get_record(intf, header, itr);
             if (rec == NULL)
             {
@@ -494,7 +494,7 @@ ipmi_raw_main(struct ipmi_intf * intf, int argc, char ** argv)
     }
 
 
-    rc = ipmi_sensor_value(intf,rsp->data[0],req.msg.data[0]) ;
+    rc = ipmi_sensor_value_format(intf,rsp->data[0],req.msg.data[0]) ;
 
     if ( rc == -1 )
     {
